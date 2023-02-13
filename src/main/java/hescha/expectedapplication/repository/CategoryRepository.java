@@ -1,6 +1,6 @@
-package main.java.hescha.expectedapplication.repository;
+package hescha.expectedapplication.repository;
 
-import main.java.hescha.expectedapplication.model.Category;
+import hescha.expectedapplication.model.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

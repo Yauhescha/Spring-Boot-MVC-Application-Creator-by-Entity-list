@@ -1,4 +1,4 @@
-package main.java.hescha.expectedapplication.service;
+package hescha.expectedapplication.service;
 
 
 import lombok.RequiredArgsConstructor;

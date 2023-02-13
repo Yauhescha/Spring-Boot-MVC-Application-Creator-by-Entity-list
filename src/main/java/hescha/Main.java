@@ -15,12 +15,12 @@ public class Main {
 
         Template t = ve.getTemplate("src/main/resources/templates/Repository.java.vm");
         VelocityContext context = new VelocityContext();
-        context.put("class", main.java.hescha.expectedapplication.model.Category.class);
+        context.put("class", hescha.expectedapplication.model.Category.class);
 
         StringWriter writer = new StringWriter();
         t.merge(context, writer);
 
-        FileWriter fw = new FileWriter("generated/"+System.currentTimeMillis() + ".java");
+        FileWriter fw = new FileWriter("generated/" + System.currentTimeMillis() + ".java");
         fw.append(writer.toString());
         fw.flush();
         fw.close();

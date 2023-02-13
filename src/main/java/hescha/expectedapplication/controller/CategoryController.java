@@ -1,7 +1,7 @@
-package main.java.hescha.expectedapplication.controller;
+package hescha.expectedapplication.controller;
 
-import main.java.hescha.expectedapplication.model.Category;
-import main.java.hescha.expectedapplication.service.CategoryService;
+import hescha.expectedapplication.model.Category;
+import hescha.expectedapplication.service.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

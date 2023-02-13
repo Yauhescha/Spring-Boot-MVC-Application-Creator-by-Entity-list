@@ -1,4 +1,4 @@
-package main.java.hescha.expectedapplication.model;
+package hescha.expectedapplication.model;
 
 import lombok.Data;
 
@@ -29,6 +29,7 @@ public class Category {
     private LocalDate bornDate;
     private LocalDate birthDate;
     private Set<Role> roles = new HashSet<>();
-    private List<String> jobs = new ArrayList<>();
+    private List<String> jobs = List.of("ASD");
     private List<Category> categories = new ArrayList<>();
+
 }

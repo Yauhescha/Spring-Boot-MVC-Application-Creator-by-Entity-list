@@ -1,7 +1,7 @@
-package main.java.hescha.expectedapplication.service;
+package hescha.expectedapplication.service;
 
-import main.java.hescha.expectedapplication.model.Category;
-import main.java.hescha.expectedapplication.repository.CategoryRepository;
+import hescha.expectedapplication.model.Category;
+import hescha.expectedapplication.repository.CategoryRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
