@@ -1,0 +1,43 @@
+### Repository.java.vm
+#set($entityName = $class.getSimpleName())
+package ${class.getPackage().getName()}.repository;
+
+import ${class.getCanonicalName()};
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface ${entityName}Repository extends JpaRepository<${entityName}, Long> {
+    #foreach($field in ${class.getDeclaredFields()})
+
+        #set($fieldType = $field.getType().getSimpleName())
+        #set($fieldName = $field.getName())
+        #set($camelCase = $fieldName.substring(0,1).toUpperCase() + $fieldName.substring(1))
+        #set($unique = false)
+
+        #foreach($annotation in $field.getAnnotations())
+            #if($annotation.annotationType().getSimpleName().equals("Column"))
+                #set($column = $annotation)
+                #if($column.unique())
+                    #set($unique = true)
+                #end
+            #end
+        #end
+
+        #if(${fieldType.equals("String")})
+            #if($unique)
+                ${entityName} findBy${camelCase}(String ${fieldName});
+                ${entityName} findBy${camelCase}IgnoreCase(String ${fieldName});
+            #else
+                List<${entityName}> findBy${camelCase}(String ${fieldName});
+            #end
+            List<${entityName}> findBy${camelCase}Contains(String ${fieldName});
+        #elseif(${fieldType.equals("List")})
+            List<${entityName}> findBy${camelCase}Contains(${fieldType} ${fieldName});
+        #elseif(${fieldType.equals("Set")})
+            Set<${entityName}> findBy${camelCase}Contains(${fieldType} ${fieldName});
+        #else
+            $entityName findBy${camelCase}(${fieldType} ${fieldName});
+        #end
+    #end
+}
