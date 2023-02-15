@@ -1,13 +1,14 @@
 package hescha.expectedapplication.service;
 
 
+import hescha.expectedapplication.model.AbstractEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
 @RequiredArgsConstructor
-public abstract class CrudService<Entity> {
+public abstract class CrudService<Entity extends AbstractEntity> {
     public final JpaRepository<Entity, Long> repository;
 
     public Entity create(Entity entity) {
@@ -25,6 +26,8 @@ public abstract class CrudService<Entity> {
     public Entity update(Entity entity) {
         return repository.saveAndFlush(entity);
     }
+
+    public abstract Entity update(Long id, Entity entity);
 
     public void delete(long id) {
         repository.deleteById(id);

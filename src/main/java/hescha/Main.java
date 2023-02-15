@@ -9,22 +9,25 @@ import org.apache.velocity.app.VelocityEngine;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import static hescha.creator.ClassType.SERVICE;
+import static hescha.creator.ClassType.*;
 
 public class Main {
     @SneakyThrows
     public static void main(String[] args) {
         VelocityEngine velocityEngine = new VelocityEngine();
         velocityEngine.init();
-        CodeGenerator repositoryGenerator = new CodeGenerator(velocityEngine);
+        CodeGenerator codeGenerator = new CodeGenerator(velocityEngine);
 
         Class<Category> classForGenerating = Category.class;
 
-//        String generatedRepository = repositoryGenerator.generate(REPOSITORY, classForGenerating);
-//        saveGeneratedCLass(REPOSITORY, classForGenerating, generatedRepository);
+        String generatedRepository = codeGenerator.generate(REPOSITORY, classForGenerating);
+        saveGeneratedCLass(REPOSITORY, classForGenerating, generatedRepository);
 
-        String generatedRepository = repositoryGenerator.generate(SERVICE, classForGenerating);
-        saveGeneratedCLass(SERVICE, classForGenerating, generatedRepository);
+        String generatedService = codeGenerator.generate(SERVICE, classForGenerating);
+        saveGeneratedCLass(SERVICE, classForGenerating, generatedService);
+
+        String generatedController = codeGenerator.generate(CONTROLLER, classForGenerating);
+        saveGeneratedCLass(CONTROLLER, classForGenerating, generatedController);
 
     }
 
