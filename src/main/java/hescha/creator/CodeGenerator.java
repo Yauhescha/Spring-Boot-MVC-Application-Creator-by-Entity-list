@@ -8,14 +8,12 @@ import org.apache.velocity.app.VelocityEngine;
 import java.io.StringWriter;
 
 @RequiredArgsConstructor
-public class RepositoryGenerator {
-    private static final String TEMPLATE_NAME = "Repository";
-    private static final String TEMPLATE_PATH = "src/main/resources/templates/" + TEMPLATE_NAME + ".java.vm";
+public class CodeGenerator {
     private final VelocityEngine velocityEngine;
 
-    public String generateRepositoryForClass(Class<?> pojoClass) {
+    public String generate(ClassType classType, Class<?> pojoClass) {
         VelocityContext context = new VelocityContext();
-        Template t = velocityEngine.getTemplate(TEMPLATE_PATH);
+        Template t = velocityEngine.getTemplate(classType.path);
         context.put("class", pojoClass);
 
         StringWriter writer = new StringWriter();

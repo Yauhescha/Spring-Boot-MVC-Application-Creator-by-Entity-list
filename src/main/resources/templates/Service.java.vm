@@ -1,0 +1,91 @@
+### Repository.java.vm
+#set($entityName = $class.getSimpleName())
+package generated.service;
+
+import ${class.getCanonicalName()};
+import generated.repository.*;
+import org.springframework.stereotype.Service;
+import java.util.List;
+import java.util.Set;
+
+@Service
+public class ${entityName}Service extends CrudService<${entityName}> {
+
+    private final ${entityName}Repository repository;
+
+    public ${entityName}Service(${entityName}Repository repository) {
+        super(repository);
+        this.repository = repository;
+    }
+
+    #foreach($field in ${class.getDeclaredFields()})
+        #set($fieldType = $field.getType().getSimpleName())
+        #set($fieldName = $field.getName())
+        #if($fieldName.equals("id"))
+        #end
+        #set($camelCase = $fieldName.substring(0,1).toUpperCase() + $fieldName.substring(1))
+        #set($unique = false)
+        #foreach($annotation in $field.getAnnotations())
+            #if($annotation.annotationType().getSimpleName().equals("Column"))
+                #set($column = $annotation)
+                #if($column.unique())
+                    #set($unique = true)
+                #end
+            #end
+        #end
+        #if(${fieldType.equals("String")})
+            #if($unique)
+                public ${entityName} findBy${camelCase}(String ${fieldName}) {
+                    return repository.findBy${camelCase}(${fieldName});
+                }
+                public ${entityName} findBy${camelCase}IgnoreCase(String ${fieldName}) {
+                    return repository.findBy${camelCase}IgnoreCase(${fieldName});
+                }
+            #else
+                public List<${entityName}> findBy${camelCase}(String ${fieldName}) {
+                    return repository.findBy${camelCase}(${fieldName});
+                }
+            #end
+            public List<${entityName}> findBy${camelCase}Contains(String ${fieldName}) {
+                return repository.findBy${camelCase}Contains(${fieldName});
+            }
+        #elseif(${fieldType.equals("List")})
+            #set($paramType = ${field.getGenericType().toString().replaceAll(".*<(.*?)>", "$1")})
+            public List<$entityName> findBy${camelCase}Contains(${paramType} ${field.getName()}) {
+                return repository.findBy${camelCase}Contains(${field.getName()});
+            }
+        #elseif(${fieldType.equals("Set")})
+            #set($paramType = ${field.getGenericType().toString().replaceAll(".*<(.*?)>", "$1")})
+            public Set<${entityName}> findBy${camelCase}Contains(${paramType} ${fieldName}) {
+                return repository.findBy${camelCase}Contains(${fieldName});
+            }
+        #elseif($fieldName.equals("id"))
+        #else
+            public $entityName findBy${camelCase}(${fieldType} ${fieldName}) {
+                return repository.findBy${camelCase}(${fieldName});
+            }
+        #end
+    #end
+
+
+    public ${entityName} update(Long id, ${entityName} entity) {
+        ${entityName} read = read(id);
+        if(read == null){
+            throw new RuntimeException("Entity ${entityName} not found");
+        }
+        updateFields(entity, read);
+        return update(read);
+
+    }
+
+    private void updateFields(${entityName} entity, ${entityName} read) {
+        #foreach($field in ${class.getDeclaredFields()})
+            #set($fieldName = $field.getName())
+            #if($fieldName.equals("id"))
+            #else
+                #set($camelCase = $fieldName.substring(0,1).toUpperCase() + $fieldName.substring(1))
+                read.set${camelCase}(entity.get${camelCase}());
+            #end
+        #end
+    }
+}

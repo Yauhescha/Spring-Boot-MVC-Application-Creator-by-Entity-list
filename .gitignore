@@ -3,5 +3,5 @@ out/
 !**/src/main/**/out/
 !**/src/test/**/out/
 .idea/
-/generated/
+/src/main/java/generated/
 /target/

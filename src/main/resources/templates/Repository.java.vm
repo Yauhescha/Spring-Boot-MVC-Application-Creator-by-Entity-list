@@ -1,10 +1,12 @@
 ### Repository.java.vm
 #set($entityName = $class.getSimpleName())
-package ${class.getPackage().getName()}.repository;
+package generated.repository;
 
 import ${class.getCanonicalName()};
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+import java.util.List;
+import java.util.Set;
 
 @Repository
 public interface ${entityName}Repository extends JpaRepository<${entityName}, Long> {
@@ -33,7 +35,9 @@ public interface ${entityName}Repository extends JpaRepository<${entityName}, Lo
 #set($paramType = ${field.getGenericType().toString().replaceAll(".*<(.*?)>", "$1")})
     List<$entityName> findBy${camelCase}Contains(${paramType} ${field.getName()});
 #elseif(${fieldType.equals("Set")})
-    Set<${entityName}> findBy${camelCase}Contains(${fieldType} ${fieldName});
+    #set($paramType = ${field.getGenericType().toString().replaceAll(".*<(.*?)>", "$1")})
+    Set<${entityName}> findBy${camelCase}Contains(${paramType} ${fieldName});
+#elseif($fieldName.equals("id"))
 #else
     $entityName findBy${camelCase}(${fieldType} ${fieldName});
 #end
