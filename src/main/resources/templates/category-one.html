@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>View Category</title>
+</head>
+<body>
+<h1>Category Details</h1>
+<h3 th:if="${message!=null}" th:text="${message}">Message</h3>
+<table>
+    <tr>
+        <th>ID:</th>
+        <td th:text="${entity.id}"></td>
+    </tr>
+    <tr>
+        <th>Name:</th>
+        <td th:text="${entity.name}"></td>
+    </tr>
+    <tr>
+        <th>Roles:</th>
+        <td>
+            <ul>
+                <li th:each="role : ${entity.roles}" th:text="${role.name}"></li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <th>Categories:</th>
+        <td>
+            <ul>
+                <li th:each="subCategory : ${entity.categories}" th:text="${subCategory.name}"></li>
+            </ul>
+        </td>
+    </tr>
+</table>
+<br>
+<a th:href="@{/category}">Back to Categories List</a>
+<a th:href="@{/category/edit/{id}(id=${entity.id})}">Edit</a>
+<form th:if="${entity.id!=null}" method="get" th:action="'/category/'+${entity.id}+'/delete'">
+    <input type="submit" value="Delete" onclick="return confirm('Are you sure?')">
+</form>
+</body>
+</html>

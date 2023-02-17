@@ -1,11 +1,18 @@
 package hescha.expectedapplication.model;
 
 import lombok.Data;
+import org.hibernate.annotations.GenericGenerator;
 
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+
 
 @Data
-public class AbstractEntity {
+@MappedSuperclass
+public abstract class AbstractEntity {
     @Id
-    private Long id;
+    @GeneratedValue(generator = "increment")
+    @GenericGenerator(name = "increment", strategy = "increment")
+    protected Long id;
 }
