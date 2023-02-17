@@ -20,14 +20,17 @@ public class Main {
 
         Class<Category> classForGenerating = Category.class;
 
-        String generatedRepository = codeGenerator.generate(REPOSITORY, classForGenerating);
-        saveGeneratedCLass(REPOSITORY, classForGenerating, generatedRepository);
+//        String generatedRepository = codeGenerator.generate(REPOSITORY, classForGenerating);
+//        saveGeneratedCLass(REPOSITORY, classForGenerating, generatedRepository);
+//
+//        String generatedService = codeGenerator.generate(SERVICE, classForGenerating);
+//        saveGeneratedCLass(SERVICE, classForGenerating, generatedService);
+//
+//        String generatedController = codeGenerator.generate(CONTROLLER, classForGenerating);
+//        saveGeneratedCLass(CONTROLLER, classForGenerating, generatedController);
 
-        String generatedService = codeGenerator.generate(SERVICE, classForGenerating);
-        saveGeneratedCLass(SERVICE, classForGenerating, generatedService);
-
-        String generatedController = codeGenerator.generate(CONTROLLER, classForGenerating);
-        saveGeneratedCLass(CONTROLLER, classForGenerating, generatedController);
+        String generatedController = codeGenerator.generate(THYMELEAF_ALL_PAGE, classForGenerating);
+        saveGeneratedCLass(THYMELEAF_ALL_PAGE, classForGenerating, generatedController);
 
     }
 
@@ -41,7 +44,7 @@ public class Main {
 
     private static String getPathToFile(ClassType classType, Class<Category> classForGenerating) {
         String pathToFile = "src/main/java/generated/" + classType.getTemplateName().toLowerCase()
-                + "/" + classForGenerating.getSimpleName() + classType.getTemplateName() + ".java";
+                + "/" + classForGenerating.getSimpleName() + classType.getTemplateName() + "." + classType.getType();
         return pathToFile;
     }
 }

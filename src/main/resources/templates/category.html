@@ -1,40 +1,40 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>entities</title>
+    <title>List of Category</title>
     <meta charset="UTF-8">
 </head>
 <body>
-<h1>entities</h1>
-<h3 th:if="${message!=null}" th:text="${message}">Message</h3>
-<a th:href="@{/category/edit}">Create new entity</a>
+<h1>List of Category</h1>
+<h3 th:if="${message != null}" th:text="${message}">Message</h3>
+<a th:href="@{/category/edit}">Create new Category</a>
 <table>
     <thead>
     <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Roles</th>
-        <th>Categories</th>
-        <th>Action</th>
+        <th>name</th>
+        <th>roles</th>
+        <th>categories</th>
     </tr>
     </thead>
     <tbody>
     <tr th:each="entity : ${list}">
-        <td th:text="${entity.id}"></td>
-        <td th:text="${entity.name}"></td>
+        <td th:text=${entity.name}></td>
         <td>
             <ul>
-                <li th:each="role : ${entity.roles}" th:text="${role.name}"></li>
+                <li th:each="roles-item : ${entity.roles}" th:text="${roles-item}"></li>
             </ul>
         </td>
         <td>
             <ul>
-                <li th:each="subentity : ${entity.categories}" th:text="${subentity.name}"></li>
+                <li th:each="categories-item : ${entity.categories}" th:text="${categories-item}"></li>
             </ul>
         </td>
+
         <td>
             <a th:href="@{/category/edit/{id}(id=${entity.id})}">Edit</a>
-            <form th:if="${entity.id!=null}" method="get" th:action="'/category/'+${entity.id}+'/delete'">
+            <form th:if="${entity.id!=null}" method="get"
+                  th:action="'/category/'
+                  +${entity.id}+'/delete'">
                 <input type="submit" value="Delete" onclick="return confirm('Are you sure?')">
             </form>
         </td>
