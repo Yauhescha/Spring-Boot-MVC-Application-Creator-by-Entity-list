@@ -31,6 +31,26 @@ public class ${entityName}Controller {
 
     private final ${entityName}Service service;
 
+    #foreach($field in ${class.getDeclaredFields()})
+        #set($fieldType = $field.getType().getSimpleName())
+        #set($fieldTypeFull = $field.getType().getName())
+        #if(${fieldType.equals("List")} || ${fieldType.equals("Set")})
+            #set($paramType = ${field.getGenericType().toString().replaceAll(".*<(.*?)>", "$1")})
+            #set($fieldTypeSmall = ${paramType.substring(${paramType.lastIndexOf(".")})})
+            #set($fieldTypeSmall = ${fieldTypeSmall.replace(".", "")})
+            #set($lowerCase = $fieldTypeSmall.substring(0,1).toLowerCase() + $fieldTypeSmall.substring(1))
+                #if(${paramType.contains("java.")})
+                #else
+                    private final ${fieldTypeSmall}Service ${lowerCase}Service;
+                #end
+        #elseif(${fieldTypeFull.contains("java.")})
+        #else
+            #set($fieldTypeSmall = $fieldType.replace(".*.", ""))
+            #set($lowerCase = $fieldTypeSmall.substring(0,1).toLowerCase() + $fieldTypeSmall.substring(1))
+            private final ${fieldType}Service ${lowerCase}Service;
+        #end
+    #end
+
     @GetMapping
     public String readAll(Model model) {
         model.addAttribute("list", service.readAll());
@@ -50,7 +70,27 @@ public class ${entityName}Controller {
         } else {
             model.addAttribute("entity", service.read(id));
         }
-        // ADDITIONAL lists generate here
+
+        #foreach($field in ${class.getDeclaredFields()})
+            #set($fieldType = $field.getType().getSimpleName())
+            #set($fieldTypeFull = $field.getType().getName())
+            #if(${fieldType.equals("List")} || ${fieldType.equals("Set")})
+                #set($paramType = ${field.getGenericType().toString().replaceAll(".*<(.*?)>", "$1")})
+                #set($fieldTypeSmall = ${paramType.substring(${paramType.lastIndexOf(".")})})
+                #set($fieldTypeSmall = ${fieldTypeSmall.replace(".", "")})
+                #set($lowerCase = $fieldTypeSmall.substring(0,1).toLowerCase() + $fieldTypeSmall.substring(1))
+                #if(${paramType.contains("java.")})
+                #else
+                    model.addAttribute("${lowerCase}", ${lowerCase}service.readAll(id));
+                #end
+            #elseif(${fieldTypeFull.contains("java.")})
+            #else
+                #set($fieldTypeSmall = $fieldType.replace(".*.", ""))
+                #set($lowerCase = $fieldTypeSmall.substring(0,1).toLowerCase() + $fieldTypeSmall.substring(1))
+                model.addAttribute("${lowerCase}", ${lowerCase}service.readAll());
+            #end
+        #end
+
         return THYMELEAF_TEMPLATE_EDIT_PAGE;
     }
 
