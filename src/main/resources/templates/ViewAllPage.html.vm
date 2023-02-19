@@ -17,6 +17,8 @@
     #set($fieldName = $field.getName())
         <th>${fieldName}</th>
 #end
+
+        <th>Action</th>
     </tr>
     </thead>
     <tbody>
