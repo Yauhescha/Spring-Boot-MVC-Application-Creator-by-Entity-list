@@ -29,8 +29,11 @@ public class Main {
 //        String generatedController = codeGenerator.generate(CONTROLLER, classForGenerating);
 //        saveGeneratedCLass(CONTROLLER, classForGenerating, generatedController);
 
-        String generatedController = codeGenerator.generate(THYMELEAF_ALL_PAGE, classForGenerating);
-        saveGeneratedCLass(THYMELEAF_ALL_PAGE, classForGenerating, generatedController);
+//        String generatedController = codeGenerator.generate(THYMELEAF_ALL_PAGE, classForGenerating);
+//        saveGeneratedCLass(THYMELEAF_ALL_PAGE, classForGenerating, generatedController);
+
+        String generatedController = codeGenerator.generate(THYMELEAF_SINGLE_PAGE, classForGenerating);
+        saveGeneratedCLass(THYMELEAF_SINGLE_PAGE, classForGenerating, generatedController);
 
     }
 

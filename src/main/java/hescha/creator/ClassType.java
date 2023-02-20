@@ -7,7 +7,8 @@ public enum ClassType {
     SERVICE("Service", "java"),
     REPOSITORY("Repository", "java"),
     CONTROLLER("Controller", "java"),
-    THYMELEAF_ALL_PAGE("ViewAllPage", "html");
+    THYMELEAF_ALL_PAGE("ViewAllPage", "html"),
+    THYMELEAF_SINGLE_PAGE("ViewSinglePage", "html");
 
     final String templateName;
     final String path;

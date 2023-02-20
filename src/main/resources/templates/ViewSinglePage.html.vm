@@ -1,0 +1,42 @@
+#set($entityName = $class.getSimpleName())
+#set($entityNameCamelCase = $entityName.substring(0,1).toLowerCase() + $entityName.substring(1))
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>View ${entityName}</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+<h1>${entityName} Details</h1>
+#[[<h3 th:if="${message!=null}" th:text="${message}">Message</h3>]]#
+<table>
+    #foreach($field in ${class.getDeclaredFields()})
+    #set($fieldName = $field.getName())
+    #set($fieldType = $field.getType().getSimpleName())
+    <tr>
+        <th>${field.getName()}:</th>
+        #if(${fieldType.equals("List")} || ${fieldType.equals("Set")})
+        #set($paramType = ${field.getGenericType().toString().replaceAll(".*<(.*?)>", "$1")})
+        <td>
+            <ul>
+                <li th:each="${field.getName()}#[[-item : ${entity.]]#${field.getName()}#[[}" th:text="${]]#${field.getName()}#[[-item}"></li>]]#
+            </ul>
+        </td>
+        #else
+        #[[<td th:text="${entity.]]#${field.getName()}}"></td>
+        #end
+    </tr>
+    #end
+
+
+</table>
+<br>
+<a th:href="@{/category}">Back to the List</a>
+#[[<a th:href="@{/]]#${entityNameCamelCase}#[[/edit/{id}(id=${entity.id})}">Edit</a>]]#
+#[[<form th:if="${entity.id!=null}" method="get"]]#
+         th:action="'/${entityNameCamelCase}/'
+               #[[+ ${entity.id} + '/delete'">]]#
+    <input type="submit" value="Delete" onclick="return confirm('Are you sure?')">
+</form>
+</body>
+</html>
