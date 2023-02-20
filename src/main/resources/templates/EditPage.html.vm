@@ -1,0 +1,38 @@
+#set($entityName = $class.getSimpleName())
+#set($entityNameCamelCase = $entityName.substring(0,1).toLowerCase() + $entityName.substring(1))
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit ${entityName}</title>
+</head>
+<body>
+<h1>Edit ${entityName}</h1>
+#[[<h3 th:if="${message != null}" th:text="${message}">Message</h3>]]#
+<form th:action="@{/${entityNameCamelCase}}" th:object="${entity}" method="post">
+
+#foreach($field in ${class.getDeclaredFields()})
+    #set($fieldName = $field.getName())
+    #set($fieldType = $field.getType().getSimpleName())
+    <p>
+        <label for="${fieldName}">${fieldName}:</label>
+    #if(${fieldType.equals("List")} || ${fieldType.equals("Set")})
+        #set($paramType = ${field.getGenericType().toString().replaceAll(".*<(.*?)>", "$1")})
+        <select multiple="multiple" th:field="*{${fieldName}}" id="${fieldName}">
+            <option th:each="${fieldName}_item : #[[${]]#${fieldName}_list}" #[[th:value="${]]#${fieldName}_item#[[}" th:text="${]]#${fieldName}_item}"></option>
+        </select>
+    #else
+        <input type="text" th:field="*{${fieldName}}" id="${fieldName}" required>
+    #end
+    </p>
+#end
+
+    <p>
+        <input type="text" th:field="*{id}" id="id">
+        <input type="submit" value="Save">
+        <a th:href="@{/${entityNameCamelCase}}">Cancel</a>
+    </p>
+</form>
+
+</body>
+</html>

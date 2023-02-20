@@ -19,7 +19,7 @@
         #set($paramType = ${field.getGenericType().toString().replaceAll(".*<(.*?)>", "$1")})
         <td>
             <ul>
-                <li th:each="${field.getName()}#[[-item : ${entity.]]#${field.getName()}#[[}" th:text="${]]#${field.getName()}#[[-item}"></li>]]#
+                <li th:each="${field.getName()}#[[_item : ${entity.]]#${field.getName()}#[[}" th:text="${]]#${field.getName()}#[[_item}"></li>]]#
             </ul>
         </td>
         #else

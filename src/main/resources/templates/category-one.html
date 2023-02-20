@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>View Category</title>
-    <meta charset="UTF-8">
+    <meta charset="UTF_8">
 </head>
 <body>
 <h1>Category Details</h1>
@@ -16,7 +16,7 @@
         <th>roles:</th>
         <td>
             <ul>
-                <li th:each="roles-item : ${entity.roles}" th:text="${roles-item}"></li>
+                <li th:each="roles_item : ${entity.roles}" th:text="${roles_item}"></li>
             </ul>
         </td>
     </tr>
@@ -24,7 +24,7 @@
         <th>categories:</th>
         <td>
             <ul>
-                <li th:each="categories-item : ${entity.categories}" th:text="${categories-item}"></li>
+                <li th:each="categories_item : ${entity.categories}" th:text="${categories_item}"></li>
             </ul>
         </td>
     </tr>

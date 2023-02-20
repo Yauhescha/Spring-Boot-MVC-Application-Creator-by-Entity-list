@@ -7,6 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.thymeleaf.expression.Lists;
+
+import java.util.List;
 
 
 @Controller
@@ -42,7 +45,9 @@ public class CategoryController {
         } else {
             model.addAttribute("entity", service.read(id));
         }
-        // ADDITIONAL lists generate here
+
+        model.addAttribute("categories_list", List.of("One", "Two", "Tree"));
+        model.addAttribute("roles_list", List.of("One", "Two"));
         return THYMELEAF_TEMPLATE_EDIT_PAGE;
     }
 

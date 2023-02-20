@@ -1,30 +1,31 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF_8">
     <title>Edit Category</title>
 </head>
 <body>
-<h1>Create Category</h1>
-<h3 th:if="${message!=null}" th:text="${message}">Message</h3>
-
+<h1>Edit Category</h1>
+<h3 th:if="${message != null}" th:text="${message}">Message</h3>
 <form th:action="@{/category}" th:object="${entity}" method="post">
+
     <p>
-        <label for="name">Name:</label>
-        <input type="text" th:field="*{name}" id="name" required>
-    </p>
+        <label for="name">name:</label>
+            <input type="text" th:field="*{name}" id="name" required>
+        </p>
     <p>
-        <label for="roles">Roles:</label>
-        <select multiple="multiple" th:field="*{roles}" id="roles">
-            <option th:each="role : ${allRoles}" th:value="${role}" th:text="${role.name}"></option>
+        <label for="roles">roles:</label>
+            <select multiple="multiple" th:field="*{roles}" id="roles">
+            <option th:each="roles_item:${roles_list}" th:value="${roles_item}" th:text="${roles_item}"></option>
         </select>
-    </p>
+        </p>
     <p>
-        <label for="categories">Categories:</label>
-        <select multiple="multiple" th:field="*{categories}" id="categories">
-            <option th:each="category : ${allCategories}" th:value="${category}" th:text="${category.name}"></option>
+        <label for="categories">categories:</label>
+            <select multiple="multiple" th:field="*{categories}" id="categories">
+            <option th:each="categories_item : ${categories_list}" th:value="${categories_item}" th:text="${categories_item}"></option>
         </select>
-    </p>
+        </p>
+
     <p>
         <input type="text" th:field="*{id}" id="id">
         <input type="submit" value="Save">
