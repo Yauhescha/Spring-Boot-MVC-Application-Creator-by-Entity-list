@@ -87,7 +87,7 @@ public class ${entityName}Controller {
             #else
                 #set($fieldTypeSmall = $fieldType.replace(".*.", ""))
                 #set($lowerCase = $fieldTypeSmall.substring(0,1).toLowerCase() + $fieldTypeSmall.substring(1))
-                model.addAttribute("${lowerCase}", ${lowerCase}service.readAll());
+                model.addAttribute("${lowerCase}-list", ${lowerCase}Service.readAll());
             #end
         #end
 
