@@ -64,7 +64,7 @@ public class ${entityName}Controller {
     }
 
     @GetMapping(path = {"/edit", "/edit/{id}"})
-    public String editPage(Model model, @PathVariable("id") Long id) {
+    public String editPage(Model model, @PathVariable(name = "id", required = false) Long id) {
         if (id == null) {
             model.addAttribute("entity", new ${entityName}());
         } else {
@@ -81,13 +81,13 @@ public class ${entityName}Controller {
                 #set($lowerCase = $fieldTypeSmall.substring(0,1).toLowerCase() + $fieldTypeSmall.substring(1))
                 #if(${paramType.contains("java.")})
                 #else
-                    model.addAttribute("${lowerCase}", ${lowerCase}service.readAll(id));
+                    model.addAttribute("${lowerCase}", ${lowerCase}Service.readAll());
                 #end
             #elseif(${fieldTypeFull.contains("java.")})
             #else
                 #set($fieldTypeSmall = $fieldType.replace(".*.", ""))
                 #set($lowerCase = $fieldTypeSmall.substring(0,1).toLowerCase() + $fieldTypeSmall.substring(1))
-                model.addAttribute("${lowerCase}-list", ${lowerCase}Service.readAll());
+                model.addAttribute("${lowerCase}_list", ${lowerCase}Service.readAll());
             #end
         #end
 
@@ -118,7 +118,7 @@ public class ${entityName}Controller {
         }
     }
 
-    @GeMapping("/{id}/delete")
+    @GetMapping("/{id}/delete")
     public String delete(@PathVariable Long id, RedirectAttributes ra) {
         try {
             service.delete(id);

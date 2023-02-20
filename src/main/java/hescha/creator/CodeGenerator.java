@@ -13,7 +13,7 @@ public class CodeGenerator {
 
     public String generate(ClassType classType, Class<?> pojoClass) {
         VelocityContext context = new VelocityContext();
-        Template t = velocityEngine.getTemplate(classType.path);
+        Template t = velocityEngine.getTemplate(classType.pathToTemplate);
         context.put("class", pojoClass);
 
         StringWriter writer = new StringWriter();

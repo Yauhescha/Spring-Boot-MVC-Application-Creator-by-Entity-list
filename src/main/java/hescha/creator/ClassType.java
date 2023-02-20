@@ -4,20 +4,25 @@ import lombok.Getter;
 
 @Getter
 public enum ClassType {
-    SERVICE("Service", "java"),
-    REPOSITORY("Repository", "java"),
-    CONTROLLER("Controller", "java"),
-    THYMELEAF_ALL_PAGE("ViewAllPage", "html"),
-    THYMELEAF_SINGLE_PAGE("ViewSinglePage", "html"),
-    THYMELEAF_EDIT_PAGE("EditPage", "html");
+    SERVICE("Service", "service", "java", ""),
+    REPOSITORY("Repository", "repository", "java", ""),
+    CONTROLLER("Controller", "controller", "java", ""),
+    THYMELEAF_ALL_PAGE("ViewAllPage", "templates", "html", ""),
+    THYMELEAF_SINGLE_PAGE("ViewSinglePage", "templates", "html", "-one"),
+    THYMELEAF_EDIT_PAGE("EditPage", "templates", "html", "-edit");
 
     final String templateName;
-    final String path;
-    final String type;
+    final String pathToFolderToSave;
+    final String pathToTemplate;
 
-    ClassType(String templateName, String type) {
+    final String type;
+    final String postfix;
+
+    ClassType(String templateName, String pathToFolderToSave, String type, String postfix) {
         this.templateName = templateName;
+        this.pathToFolderToSave = pathToFolderToSave;
         this.type = type;
-        this.path = "src/main/resources/templates/" + templateName + "." + type + ".vm" ;
+        this.postfix = postfix;
+        this.pathToTemplate = "src/main/resources/templates/" + templateName + "." + type + ".vm" ;
     }
 }

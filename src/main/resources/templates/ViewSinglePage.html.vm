@@ -31,7 +31,7 @@
 
 </table>
 <br>
-<a th:href="@{/category}">Back to the List</a>
+<a th:href="@{/${entityNameCamelCase}}">Back to the List</a>
 #[[<a th:href="@{/]]#${entityNameCamelCase}#[[/edit/{id}(id=${entity.id})}">Edit</a>]]#
 #[[<form th:if="${entity.id!=null}" method="get"]]#
          th:action="'/${entityNameCamelCase}/'
