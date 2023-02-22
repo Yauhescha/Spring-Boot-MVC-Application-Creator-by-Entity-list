@@ -81,7 +81,7 @@ public class ${entityName}Controller {
                 #set($lowerCase = $fieldTypeSmall.substring(0,1).toLowerCase() + $fieldTypeSmall.substring(1))
                 #if(${paramType.contains("java.")})
                 #else
-                    model.addAttribute("${lowerCase}", ${lowerCase}Service.readAll());
+                    model.addAttribute("${lowerCase}_list", ${lowerCase}Service.readAll());
                 #end
             #elseif(${fieldTypeFull.contains("java.")})
             #else

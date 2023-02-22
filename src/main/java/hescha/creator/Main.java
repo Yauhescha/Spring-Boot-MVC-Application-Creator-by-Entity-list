@@ -1,6 +1,5 @@
 package hescha.creator;
 
-import hescha.expectedapplication.model.Category;
 import lombok.SneakyThrows;
 import org.apache.velocity.app.VelocityEngine;
 
@@ -17,7 +16,7 @@ public class Main {
         velocityEngine.init();
         CodeGenerator codeGenerator = new CodeGenerator(velocityEngine);
 
-        Class<Category> classForGenerating = Category.class;
+        Class classForGenerating = Product.class;
 
         Set<Class> allClassesUsingClassLoader = findAllClassesUsingClassLoader(classForGenerating.getPackageName());
         System.out.println(allClassesUsingClassLoader);
@@ -54,7 +53,7 @@ public class Main {
         return null;
     }
 
-    private static void generateCode(CodeGenerator codeGenerator, Class<Category> classForGenerating) throws IOException {
+    private static void generateCode(CodeGenerator codeGenerator, Class classForGenerating) throws IOException {
         String generatedRepository = codeGenerator.generate(REPOSITORY, classForGenerating);
         saveGeneratedCLass(REPOSITORY, classForGenerating, generatedRepository);
 
@@ -74,7 +73,7 @@ public class Main {
         saveGeneratedCLass(THYMELEAF_EDIT_PAGE, classForGenerating, generateThymeleafEditPage);
     }
 
-    private static void saveGeneratedCLass(ClassType classType, Class<Category> classForGenerating, String generatedCode) throws IOException {
+    private static void saveGeneratedCLass(ClassType classType, Class classForGenerating, String generatedCode) throws IOException {
         String pathToFile = getPathToFile(classType, classForGenerating);
         FileWriter fw = new FileWriter(pathToFile);
         fw.append(generatedCode);
@@ -82,7 +81,7 @@ public class Main {
         fw.close();
     }
 
-    private static String getPathToFile(ClassType classType, Class<Category> classForGenerating) {
+    private static String getPathToFile(ClassType classType, Class classForGenerating) {
         String pathToFile;
         if (classType.type.equals("java")) {
             pathToFile = "src/main/java/generated/" + classType.pathToFolderToSave
