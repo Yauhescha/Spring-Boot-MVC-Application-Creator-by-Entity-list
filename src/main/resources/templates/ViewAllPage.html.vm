@@ -7,48 +7,50 @@
     <meta charset="UTF-8">
 </head>
 <body>
-<h1>List of ${entityName}</h1>
-#[[<h3 th:if="${message != null}" th:text="${message}">Message</h3>]]#
-<a th:href="@{/${entityNameCamelCase}/edit}">Create new ${entityName}</a>
-<table>
-    <thead>
-    <tr>
-#foreach($field in ${class.getDeclaredFields()})
-    #set($fieldName = $field.getName())
-        <th>${fieldName}</th>
-#end
+<div class="container mt-5">
+    <h1>List of ${entityName}</h1>
 
-        <th>Action</th>
-    </tr>
-    </thead>
-    <tbody>
-    #[[    <tr th:each="entity : ${list}">]]#
-        #foreach($field in ${class.getDeclaredFields()})
+    #[[<h3 th:if="${message != null}" th:text="${message}" class="text-center alert-info">Message</h3>]]#
+
+    <a th:href="@{/${entityNameCamelCase}/edit}" class="btn btn-primary mb-3">Create new ${entityName}</a>
+
+    <table class="table table-hover">
+        <thead class="thead-dark">
+        <tr>
+    #foreach($field in ${class.getDeclaredFields()})
         #set($fieldName = $field.getName())
-        #set($fieldType = $field.getType().getSimpleName())
-            #if(${fieldType.equals("List")} || ${fieldType.equals("Set")})
-                #set($paramType = ${field.getGenericType().toString().replaceAll(".*<(.*?)>", "$1")})
-                <td>
-                    <ul>
-                        <li th:each="${field.getName()}#[[_item : ${entity.]]#${field.getName()}#[[}" th:text="${]]#${field.getName()}#[[_item}"></li>]]#
-                    </ul>
-                </td>
-            #else
-                #[[<td th:text=${entity.]]#${fieldName}}></td>
-            #end
+            <th>${fieldName}</th>
     #end
 
-        <td>
-            <a th:href="@{/${entityNameCamelCase}/{id}(id=${entity.id})}">See detail</a>
-            <a th:href="@{/${entityNameCamelCase}/edit/{id}(id=${entity.id})}">Edit</a>
-            #[[<form th:if="${entity.id!=null}" method="get"]]#
-                  th:action="'/${entityNameCamelCase}/'
-               #[[   +${entity.id}+'/delete'">]]#
-                <input type="submit" value="Delete" onclick="return confirm('Are you sure?')">
-            </form>
-        </td>
-    </tr>
-    </tbody>
-</table>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        #[[    <tr th:each="entity : ${list}">]]#
+            #foreach($field in ${class.getDeclaredFields()})
+            #set($fieldName = $field.getName())
+            #set($fieldType = $field.getType().getSimpleName())
+                #if(${fieldType.equals("List")} || ${fieldType.equals("Set")})
+                    #set($paramType = ${field.getGenericType().toString().replaceAll(".*<(.*?)>", "$1")})
+                    <td>
+                        <ul>
+                            <li th:each="${field.getName()}#[[_item : ${entity.]]#${field.getName()}#[[}" th:text="${]]#${field.getName()}#[[_item}"></li>]]#
+                        </ul>
+                    </td>
+                #else
+                    #[[<td th:text=${entity.]]#${fieldName}}></td>
+                #end
+        #end
+            <td>
+                <a th:href="@{/${entityNameCamelCase}/{id}(id=${entity.id})}" class="btn btn-info btn-sm">See detail</a>
+                <a th:href="@{/${entityNameCamelCase}/edit/{id}(id=${entity.id})}" class="btn btn-secondary btn-sm">Edit</a>
+                #[[<form th:if="${entity.id!=null}" method="get"]]# th:action="'/${entityNameCamelCase}/' #[[   +${entity.id}+'/delete'" class="d-inline">]]#
+                    <input type="submit" value="Delete" onclick="return confirm('Are you sure?')" class="btn btn-danger btn-sm">
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>

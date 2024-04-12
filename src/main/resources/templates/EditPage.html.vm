@@ -7,32 +7,36 @@
     <title>Edit ${entityName}</title>
 </head>
 <body>
-<h1>Edit ${entityName}</h1>
-#[[<h3 th:if="${message != null}" th:text="${message}">Message</h3>]]#
-<form th:action="@{/${entityNameCamelCase}}" th:object="${entity}" method="post">
 
-#foreach($field in ${class.getDeclaredFields()})
-    #set($fieldName = $field.getName())
-    #set($fieldType = $field.getType().getSimpleName())
-    <p>
-        <label for="${fieldName}">${fieldName}:</label>
-    #if(${fieldType.equals("List")} || ${fieldType.equals("Set")})
-        #set($paramType = ${field.getGenericType().toString().replaceAll(".*<(.*?)>", "$1")})
-        <select multiple="multiple" th:field="*{${fieldName}}" id="${fieldName}">
-            <option th:each="${fieldName}_item : #[[${]]#${fieldName}_list}" #[[th:value="${]]#${fieldName}_item#[[}" th:text="${]]#${fieldName}_item}"></option>
-        </select>
-    #else
-        <input type="text" th:field="*{${fieldName}}" id="${fieldName}" required>
+<div class="container mt-5">
+    <h1>Edit ${entityName}</h1>
+
+    #[[<h3 th:if="${message != null}" th:text="${message}" class="text-center alert-info">Message</h3>]]#
+
+    <form th:action="@{/${entityNameCamelCase}}" th:object="${entity}" method="post">
+
+    #foreach($field in ${class.getDeclaredFields()})
+        #set($fieldName = $field.getName())
+        #set($fieldType = $field.getType().getSimpleName())
+        <div class="form-group">
+            <label for="${fieldName}">${fieldName}:</label>
+        #if(${fieldType.equals("List")} || ${fieldType.equals("Set")})
+            #set($paramType = ${field.getGenericType().toString().replaceAll(".*<(.*?)>", "$1")})
+            <select multiple="multiple" th:field="*{${fieldName}}" id="${fieldName}" class="form-control">
+                <option th:each="${fieldName}_item : #[[${]]#${fieldName}_list}" #[[ th:value="${]]#${fieldName}_item#[[}" th:text="${]]#${fieldName}_item}"></option>
+            </select>
+        #else
+            <input type="text" th:field="*{${fieldName}}" id="${fieldName}" class="form-control" required>
+        #end
+        </div>
     #end
-    </p>
-#end
-
-    <p>
-        <input type="text" th:field="*{id}" id="id">
-        <input type="submit" value="Save">
-        <a th:href="@{/${entityNameCamelCase}}">Cancel</a>
-    </p>
-</form>
+        <p>
+            <input type="text" th:field="*{id}" id="id">
+            <input type="submit" value="Save" class="btn btn-primary">
+            <button type="button" class="btn btn-secondary" onclick="window.history.back();">Back</button>
+        </p>
+    </form>
+</div>
 
 </body>
 </html>

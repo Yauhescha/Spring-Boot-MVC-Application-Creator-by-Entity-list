@@ -1,5 +1,6 @@
 package hescha.creator;
 
+import hescha.expectedapplication.model.AbstractEntity;
 import lombok.SneakyThrows;
 import org.apache.velocity.app.VelocityEngine;
 
@@ -16,7 +17,7 @@ public class Main {
         velocityEngine.init();
         CodeGenerator codeGenerator = new CodeGenerator(velocityEngine);
 
-        Class classForGenerating = Product.class;
+        Class classForGenerating = AbstractEntity.class;
 
         Set<Class> allClassesUsingClassLoader = findAllClassesUsingClassLoader(classForGenerating.getPackageName());
         System.out.println(allClassesUsingClassLoader);

@@ -2,11 +2,12 @@
 #set($entityName = $class.getSimpleName())
 package generated.service;
 
-import ${class.getCanonicalName()};
 import generated.repository.*;
+import generated.model.*;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Set;
+import java.time.LocalDate;
 
 @Service
 public class ${entityName}Service extends CrudService<${entityName}> {

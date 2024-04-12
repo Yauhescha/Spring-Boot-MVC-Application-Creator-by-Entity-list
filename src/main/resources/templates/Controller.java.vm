@@ -2,9 +2,8 @@
 #set($entityName = $class.getSimpleName())
 package generated.controller;
 
-import ${class.getCanonicalName()};
-import generated.model.${entityName};
-import generated.service.${entityName}Service;
+import generated.model.*;
+import generated.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.ui.Model;
