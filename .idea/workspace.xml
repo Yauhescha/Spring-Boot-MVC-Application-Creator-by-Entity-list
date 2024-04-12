@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="212683e4-5a1f-4efa-971f-853cd30d85e2" name="Changes" comment="refactoring" />
+    <list default="true" id="212683e4-5a1f-4efa-971f-853cd30d85e2" name="Changes" comment="refactoring">
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Repository.java.vm" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Repository.java.vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/ViewSinglePage.html.vm" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/ViewSinglePage.html.vm" afterDir="false" />
+    </list>
     <list id="5b0a151d-cba3-485f-81df-f7ab53afccd4" name="NOT_TO_COMMIT" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ApplicationCreator.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -175,7 +175,8 @@
       <workItem from="1712795836557" duration="1893000" />
       <workItem from="1712881745557" duration="1144000" />
       <workItem from="1712921934075" duration="3270000" />
-      <workItem from="1712925784319" duration="569000" />
+      <workItem from="1712925784319" duration="1004000" />
+      <workItem from="1712926868771" duration="356000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1676307139651</created>

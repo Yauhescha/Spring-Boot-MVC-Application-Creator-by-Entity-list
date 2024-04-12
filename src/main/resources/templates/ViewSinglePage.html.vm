@@ -7,9 +7,11 @@
     <meta charset="UTF-8">
 </head>
 <body>
+
+<div class="container mt-5">
 <h1>${entityName} Details</h1>
-#[[<h3 th:if="${message!=null}" th:text="${message}">Message</h3>]]#
-<table>
+#[[<h3 th:if="${message != null}" th:text="${message}" class="text-center alert-info">Message</h3>]]#
+<table class="table table-bordered">
     #foreach($field in ${class.getDeclaredFields()})
     #set($fieldName = $field.getName())
     #set($fieldType = $field.getType().getSimpleName())
@@ -31,12 +33,10 @@
 
 </table>
 <br>
-<a th:href="@{/${entityNameLowerCase}}">Back to the List</a>
-#[[<a th:href="@{/]]#${entityNameLowerCase}#[[/edit/{id}(id=${entity.id})}">Edit</a>]]#
-#[[<form th:if="${entity.id!=null}" method="get"]]#
-         th:action="'/${entityNameLowerCase}/'
-               #[[+ ${entity.id} + '/delete'">]]#
-    <input type="submit" value="Delete" onclick="return confirm('Are you sure?')">
+<a th:href="@{/${entityNameLowerCase}}" class="btn btn-secondary">Back to the List</a>
+#[[<a th:href="@{/]]#${entityNameLowerCase}#[[/edit/{id}(id=${entity.id})}" class="btn btn-primary">Edit</a>]]#
+#[[<form th:if="${entity.id!=null}" method="get"]]# th:action="'/${entityNameLowerCase}/' #[[+ ${entity.id} + '/delete'" class="d-inline">]]#
+    <input type="submit" value="Delete" onclick="return confirm('Are you sure?')" class="btn btn-danger">
 </form>
 </body>
 </html>
