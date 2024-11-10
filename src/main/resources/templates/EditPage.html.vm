@@ -5,8 +5,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Edit ${entityName}</title>
+
+    #[[<head th:replace="~{/commons/head :: head}"></head>]#
 </head>
 <body>
+
+#[[<div th:replace="~{/commons/header :: header}"></div>]]#
 
 <div class="container mt-5">
     <h1>Edit ${entityName}</h1>
@@ -38,5 +42,7 @@
     </form>
 </div>
 
+#[[<div th:replace="~{/commons/footer :: footer}"></div>]]#
+#[[<div th:replace="~{/commons/script :: script}"></div>]]#
 </body>
 </html>

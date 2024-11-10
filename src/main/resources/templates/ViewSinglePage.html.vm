@@ -3,10 +3,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>View ${entityName}</title>
     <meta charset="UTF-8">
+    <title>View ${entityName}</title>
+
+    #[[<head th:replace="~{/commons/head :: head}"></head>]#
 </head>
 <body>
+
+#[[<div th:replace="~{/commons/header :: header}"></div>]]#
 
 <div class="container mt-5">
 <h1>${entityName} Details</h1>
@@ -38,5 +42,9 @@
 #[[<form th:if="${entity.id!=null}" method="get"]]# th:action="'/${entityNameLowerCase}/' #[[+ ${entity.id} + '/delete'" class="d-inline">]]#
     <input type="submit" value="Delete" onclick="return confirm('Are you sure?')" class="btn btn-danger">
 </form>
+</div>
+
+#[[<div th:replace="~{/commons/footer :: footer}"></div>]]#
+#[[<div th:replace="~{/commons/script :: script}"></div>]]#
 </body>
 </html>

@@ -15,4 +15,5 @@ public abstract class AbstractEntity {
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
     protected Long id;
+    protected Boolean deleted = false;
 }
