@@ -56,25 +56,25 @@ public class Main {
 
     private static void generateCode(CodeGenerator codeGenerator, Class classForGenerating) throws IOException {
         String generatedRepository = codeGenerator.generate(REPOSITORY, classForGenerating);
-        saveGeneratedCLass(REPOSITORY, classForGenerating, generatedRepository);
+        saveGeneratedClass(REPOSITORY, classForGenerating, generatedRepository);
 
         String generatedService = codeGenerator.generate(SERVICE, classForGenerating);
-        saveGeneratedCLass(SERVICE, classForGenerating, generatedService);
+        saveGeneratedClass(SERVICE, classForGenerating, generatedService);
 
         String generatedController = codeGenerator.generate(CONTROLLER, classForGenerating);
-        saveGeneratedCLass(CONTROLLER, classForGenerating, generatedController);
+        saveGeneratedClass(CONTROLLER, classForGenerating, generatedController);
 
         String generateThymeleafListPage = codeGenerator.generate(THYMELEAF_ALL_PAGE, classForGenerating);
-        saveGeneratedCLass(THYMELEAF_ALL_PAGE, classForGenerating, generateThymeleafListPage);
+        saveGeneratedClass(THYMELEAF_ALL_PAGE, classForGenerating, generateThymeleafListPage);
 
         String generateThymeleafSinglePage = codeGenerator.generate(THYMELEAF_SINGLE_PAGE, classForGenerating);
-        saveGeneratedCLass(THYMELEAF_SINGLE_PAGE, classForGenerating, generateThymeleafSinglePage);
+        saveGeneratedClass(THYMELEAF_SINGLE_PAGE, classForGenerating, generateThymeleafSinglePage);
 
         String generateThymeleafEditPage = codeGenerator.generate(THYMELEAF_EDIT_PAGE, classForGenerating);
-        saveGeneratedCLass(THYMELEAF_EDIT_PAGE, classForGenerating, generateThymeleafEditPage);
+        saveGeneratedClass(THYMELEAF_EDIT_PAGE, classForGenerating, generateThymeleafEditPage);
     }
 
-    private static void saveGeneratedCLass(ClassType classType, Class classForGenerating, String generatedCode) throws IOException {
+    private static void saveGeneratedClass(ClassType classType, Class classForGenerating, String generatedCode) throws IOException {
         String pathToFile = getPathToFile(classType, classForGenerating);
         FileWriter fw = new FileWriter(pathToFile);
         fw.append(generatedCode);
@@ -84,7 +84,15 @@ public class Main {
 
     private static String getPathToFile(ClassType classType, Class classForGenerating) {
         String pathToFile;
+
+        File folder = new File("src/main/java/generated/" + classType.pathToFolderToSave);
+
+        if (!folder.exists()) {
+            folder.mkdirs();
+        }
+
         if (classType.type.equals("java")) {
+
             pathToFile = "src/main/java/generated/" + classType.pathToFolderToSave
                     + "/" + classForGenerating.getSimpleName() + classType.getTemplateName() + "." + classType.getType();
         } else {

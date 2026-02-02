@@ -5,12 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="212683e4-5a1f-4efa-971f-853cd30d85e2" name="Changes" comment="refactoring">
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/Repository.java.vm" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/Repository.java.vm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/ViewSinglePage.html.vm" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/ViewSinglePage.html.vm" afterDir="false" />
-    </list>
-    <list id="5b0a151d-cba3-485f-81df-f7ab53afccd4" name="NOT_TO_COMMIT" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
+    <list id="5b0a151d-cba3-485f-81df-f7ab53afccd4" name="NOT_TO_COMMIT" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,8 +35,8 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Yauhescha/ApplicationCreator.git&quot;,
-    &quot;accountId&quot;: &quot;ea291a43-09b9-43f9-a05a-f75c10581c75&quot;
+    &quot;url&quot;: &quot;https://github.com/Yauhescha/Spring-Boot-MVC-Application-Creator-by-Entity-list.git&quot;,
+    &quot;accountId&quot;: &quot;d69148ae-d3a9-4c12-b72d-9449e61af57d&quot;
   }
 }</component>
   <component name="MarkdownSettingsMigration">
@@ -47,7 +46,7 @@
   &quot;associatedIndex&quot;: 2
 }</component>
   <component name="ProjectId" id="2LgwMHDZVV9Fe0ke5KdvE4FLAnb" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+  <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -59,19 +58,25 @@
     &quot;Application.hescha.creator.Main.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/ProgramFiles/Java/idea-workspace/Diploma.ShopNft&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Program Files/Java/idea-workspace/ApplicationCreator/src/main/java/hescha/expectedapplication/model&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Program Files\Java\idea-workspace\ApplicationCreator\src\main\java\hescha\expectedapplication\model" />
       <recent name="D:\ProgramFiles\Java\idea-workspace\ApplicationCreator\src\main\java\hescha\expectedapplication\model" />
       <recent name="D:\ProgramFiles\Java\idea-workspace\ApplicationCreator\src\main\resources" />
       <recent name="D:\ProgramFiles\Java\idea-workspace\ApplicationCreator\src\main\java\hescha\expectedapplication" />
@@ -131,8 +136,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
+        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.25410.129" />
+        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-IU-251.25410.129" />
       </set>
     </attachedChunks>
   </component>
@@ -177,6 +182,10 @@
       <workItem from="1712921934075" duration="3270000" />
       <workItem from="1712925784319" duration="1004000" />
       <workItem from="1712926868771" duration="356000" />
+      <workItem from="1749892272555" duration="1513000" />
+      <workItem from="1769951150773" duration="889000" />
+      <workItem from="1769954693164" duration="3190000" />
+      <workItem from="1770056263543" duration="1161000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1676307139651</created>

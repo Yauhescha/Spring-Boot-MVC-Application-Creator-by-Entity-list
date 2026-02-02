@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <title>View ${entityName}</title>
 
-    #[[<head th:replace="~{/commons/head :: head}"></head>]#
+    #[[<head th:replace="~{/commons/head :: head}"></head>]]#
 </head>
 <body>
 
@@ -45,6 +45,5 @@
 </div>
 
 #[[<div th:replace="~{/commons/footer :: footer}"></div>]]#
-#[[<div th:replace="~{/commons/script :: script}"></div>]]#
 </body>
 </html>

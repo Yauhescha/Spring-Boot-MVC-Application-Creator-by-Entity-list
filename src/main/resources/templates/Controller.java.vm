@@ -29,7 +29,6 @@ public class ${entityName}Controller {
     public static final String REDIRECT_TO_ALL_ITEMS = "redirect:" + CURRENT_ADDRESS;
 
     private final ${entityName}Service service;
-
     #foreach($field in ${class.getDeclaredFields()})
         #set($fieldType = $field.getType().getSimpleName())
         #set($fieldTypeFull = $field.getType().getName())
